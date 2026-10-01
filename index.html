@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEUROFORGE - Yeni Nesil Bilişsel Antrenman & 1v1 Zihin Düellosu</title>
+  <meta name="description" content="Lumosity oyun prensiplerinden ilham alan, monotonluğu kıran, canlı renk temaları, 1v1 gerçek zamanlı PvP arenası ve nöro-bilişsel analitik sunan zihin egzersizi platformu.">
+  <meta name="keywords" content="beyin egzersizi, zihin matrisi, lumosity, pvp zihin oyunu, hafıza oyunu, bilişsel esneklik, stroop testi">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ==========================================================================
+         ÜST BAŞLIK & NAVİGASYON (NAVBAR)
+         ========================================================================== -->
+    <header class="navbar">
+      <div class="brand" onclick="location.hash='';">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <span class="brand-title">NEUROFORGE</span>
+          <span class="brand-badge">Bilişsel Egzersiz Laboratuvarı</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <button class="nav-link active" data-view="dashboard">
+              <span>🏠</span> Genel Bakış
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-view="pvp">
+              <span>⚔️</span> 1v1 Zihin Düellosu <span class="badge-pvp">YENİ</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-link" data-view="analytics">
+              <span>📊</span> Nöro-Analitik
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Ses Aç/Kapat Butonu -->
+        <button class="icon-btn" id="sound-toggle-btn" title="Ses Efektlerini Aç/Kapat">
+          <span id="sound-icon">🔊</span>
+        </button>
+
+        <!-- Tema Değiştirici Açılır Menü (Siyah ve Mor Tekdüzeliğinden Uzak) -->
+        <div class="theme-dropdown">
+          <button class="icon-btn" id="theme-toggle-btn" title="Görsel Temayı Değiştir">
+            🎨
+          </button>
+          <div class="theme-menu" id="theme-menu">
+            <button class="theme-option" data-theme="default">
+              <span class="theme-circle" style="background:#10b981;"></span> Zümrüt & Arduvaz
+            </button>
+            <button class="theme-option" data-theme="ocean-light">
+              <span class="theme-circle" style="background:#0284c7;"></span> Okyanus & Cam (Açık)
+            </button>
+            <button class="theme-option" data-theme="cyber-amber">
+              <span class="theme-circle" style="background:#f59e0b;"></span> Siber Kehribar
+            </button>
+            <button class="theme-option" data-theme="nordic-aurora">
+              <span class="theme-circle" style="background:#2dd4bf;"></span> Kuzey Işıkları
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==========================================================================
+         ANA İÇERİK ALANI (VIEWS)
+         ========================================================================== -->
+    <main class="main-content">
+      
+      <!-- GÖRÜNÜM 1: GENEL BAKIŞ / DASHBOARD -->
+      <section class="view-section active" id="view-dashboard">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+          <div class="hero-text">
+            <h1>Zihnini <span>Yüksek Performansa</span> Programla</h1>
+            <p>
+              Lumosity'deki kısıtlayıcı ödeme duvarları ve monoton döngüler geride kaldı. 
+              Serbest antrenman, bilimsel bilişsel alanlar, adaptif zorluk ve devrim niteliğindeki <strong>1v1 Zihin Düellosu</strong> ile sınırlarını zorla.
+            </p>
+            <div class="hero-stats-row">
+              <div class="stat-chip">
+                <span>🔥 Seri:</span> <strong id="dash-streak-count">1 Gün</strong>
+              </div>
+              <div class="stat-chip">
+                <span>🧠 Bilişsel İndeks:</span> <strong id="dash-csi-count">650 CSI</strong>
+              </div>
+              <div class="stat-chip">
+                <span>⚔️ PvP Başarısı:</span> <strong id="dash-pvp-wins">0 Zafer</strong>
+              </div>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <button class="btn-primary" id="quick-start-btn">
+              ⚡ Günlük Antrenmanı Başlat
+            </button>
+          </div>
+        </div>
+
+        <!-- Egzersizler Izgarası -->
+        <div class="section-header">
+          <div>
+            <h2>Bilişsel Egzersiz Laboratuvarı</h2>
+            <p>Hafıza, dikkat, hız ve esneklik odaklı interaktif egzersizler</p>
+          </div>
+        </div>
+
+        <div class="games-grid">
+          <!-- OYUN 1: Zihin Matrisi (Kullanıcının Orijinal Kodu ile Güçlendirilmiş) -->
+          <div class="game-card" data-play-game="matrix" id="card-matrix">
+            <div class="game-card-header">
+              <div class="game-icon-box" style="color:#38bdf8;">🧠</div>
+              <span class="domain-tag tag-memory">Çalışma Belleği</span>
+            </div>
+            <h3>Zihin Matrisi</h3>
+            <p>
+              Gözlerinin önünde parlayan görsel dizileri ve konumları aklında tut. Seviye ilerledikçe hızlanan ritmik desen hafıza egzersizi.
+            </p>
+            <div class="game-card-footer">
+              <span>En Yüksek Skor: <strong class="game-high-score" id="best-matrix">0</strong></span>
+              <span class="play-arrow">Oyna →</span>
+            </div>
+          </div>
+
+          <!-- OYUN 2: Akıntı & Rota (Ebb & Flow Evrimi) -->
+          <div class="game-card" data-play-game="stream" id="card-stream">
+            <div class="game-card-header">
+              <div class="game-icon-box" style="color:#10b981;">🔄</div>
+              <span class="domain-tag tag-flexibility">Bilişsel Esneklik</span>
+            </div>
+            <h3>Akıntı & Rota</h3>
+            <p>
+              Kural saniyeler içinde değişiyor: Kimi zaman okun YÖNÜNE, kimi zaman RENK koduna göre rotayı çiz. Görev değiştirme yeteneğini geliştir.
+            </p>
+            <div class="game-card-footer">
+              <span>En Yüksek Skor: <strong class="game-high-score" id="best-stream">0</strong></span>
+              <span class="play-arrow">Oyna →</span>
+            </div>
+          </div>
+
+          <!-- OYUN 3: Kromatik Çatışma (Color Match / Stroop Evrimi) -->
+          <div class="game-card" data-play-game="stroop" id="card-stroop">
+            <div class="game-card-header">
+              <div class="game-icon-box" style="color:#f59e0b;">⚡</div>
+              <span class="domain-tag tag-speed">Hız & Ketleme</span>
+            </div>
+            <h3>Kromatik Çatışma</h3>
+            <p>
+              Beyninin kelimeyi otomatik okuma refleksini alt et! Kelimenin taşıdığı anlam ile mürekkep rengi arasındaki uyuşmazlığı hızla tespit et.
+            </p>
+            <div class="game-card-footer">
+              <span>En Yüksek Skor: <strong class="game-high-score" id="best-stroop">0</strong></span>
+              <span class="play-arrow">Oyna →</span>
+            </div>
+          </div>
+
+          <!-- OYUN 4: Sürü Algısı (Lost in Migration Evrimi) -->
+          <div class="game-card" data-play-game="flock" id="card-flock">
+            <div class="game-card-header">
+              <div class="game-icon-box" style="color:#a855f7;">🎯</div>
+              <span class="domain-tag tag-attention">Seçici Dikkat</span>
+            </div>
+            <h3>Sürü Algısı</h3>
+            <p>
+              Yanıltıcı ve zıt yönlere bakan çeldirici sürü oklarına aldırmadan merkezdeki parlayan lider okun rotasını milisaniyeler içinde bul.
+            </p>
+            <div class="game-card-footer">
+              <span>En Yüksek Skor: <strong class="game-high-score" id="best-flock">0</strong></span>
+              <span class="play-arrow">Oyna →</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GÖRÜNÜM 2: 1v1 ZİHİN DÜELLOSU (LUMOSITY'DE OLMAYAN BÜYÜK YENİLİK) -->
+      <section class="view-section" id="view-pvp">
+        <div class="pvp-hero-card">
+          <div class="pvp-hero-info">
+            <h2>⚔️ 1v1 Gerçek Zamanlı Zihin Düellosu</h2>
+            <p>
+              Lumosity'deki en büyük eksiklik giderildi: Arkadaşınla aynı klavyede yan yana veya akıllı Nöro-Bot Yapay Zekaya karşı kafa kafaya yarış! 
+              Yaptığın her 3'lü kombo, rakibinin ekranını <strong>bulandırır, kontrollerini tersine çevirir ve ekranını titretir!</strong>
+            </p>
+          </div>
+        </div>
+
+        <div id="pvp-mount-point">
+          <!-- PvP Arenası JavaScript tarafından buraya dinamik monte edilir -->
+        </div>
+      </section>
+
+      <!-- GÖRÜNÜM 3: NÖRO-ANALİTİK & BİLİŞSEL HARİTA -->
+      <section class="view-section" id="view-analytics">
+        <div class="section-header">
+          <div>
+            <h2>Nöro-Bilişsel Analiz Laboratuvarı</h2>
+            <p>Lumosity kullanıcılarının talep ettiği detaylı veri grafikleri, streak dondurma koruması ve yetenek dağılımı</p>
+          </div>
+        </div>
+
+        <div id="analytics-mount-point">
+          <!-- Radar grafiği ve istatistikler JavaScript tarafından buraya monte edilir -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         OYUN OYNAMA MODALI (STAGE MODAL)
+         ========================================================================== -->
+    <div class="game-stage-modal" id="game-stage-modal">
+      <div class="stage-window">
+        <div class="stage-top-bar">
+          <div class="stage-title-info">
+            <h3 id="stage-game-title">Oyun Başlığı</h3>
+          </div>
+          <button class="icon-btn" id="stage-close-btn" title="Kapat">✕</button>
+        </div>
+
+        <div class="stage-hud">
+          <div class="hud-item">
+            <span class="hud-label">Aşama / Seviye</span>
+            <span class="hud-val" id="stage-level-val">1</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Toplam Puan</span>
+            <span class="hud-val" id="stage-score-val">0</span>
+          </div>
+        </div>
+
+        <div class="stage-body" id="stage-body-content">
+          <!-- Oyun alanı JavaScript tarafından buraya dinamik render edilir -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UYGULAMA BETİKLERİ -->
+  <script src="js/audio.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/games/matrix.js"></script>
+  <script src="js/games/stream.js"></script>
+  <script src="js/games/stroop.js"></script>
+  <script src="js/games/flock.js"></script>
+  <script src="js/games/pvp.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

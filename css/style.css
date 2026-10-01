@@ -1,0 +1,1234 @@
+/* ==========================================================================
+   NEUROFORGE - BEYİN EGZERSİZİ & ZİHİN DÜELLOSU PLATFORMU
+   Tasarım Sistemi: Modern Glassmorphism, Canlı Renk Paletleri, Mikro-Animasyonlar
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  /* Default: Zümrüt & Derin Arduvaz (Emerald Slate - Mor ve siyah tekdüzeliğinden uzak) */
+  --bg-primary: #0b1320;
+  --bg-secondary: #111e31;
+  --bg-card: rgba(19, 34, 56, 0.7);
+  --bg-card-hover: rgba(28, 48, 78, 0.85);
+  --border-color: rgba(52, 211, 153, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  --accent-primary: #10b981;
+  --accent-primary-hover: #059669;
+  --accent-primary-glow: rgba(16, 185, 129, 0.4);
+  --accent-secondary: #06b6d4;
+  --accent-secondary-glow: rgba(6, 182, 212, 0.4);
+  --accent-warm: #f59e0b;
+  --accent-danger: #f43f5e;
+  --accent-danger-glow: rgba(244, 63, 94, 0.4);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --text-inverse: #041019;
+
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 25px var(--accent-primary-glow);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Tema 2: Okyanus & İnci (Ocean Day - Aydınlık, Ferah ve Cam Efekti) */
+[data-theme="ocean-light"] {
+  --bg-primary: #f0f7ff;
+  --bg-secondary: #e0f0fe;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --border-color: rgba(2, 132, 199, 0.25);
+  --border-subtle: rgba(14, 116, 144, 0.12);
+
+  --accent-primary: #0284c7;
+  --accent-primary-hover: #0369a1;
+  --accent-primary-glow: rgba(2, 132, 199, 0.3);
+  --accent-secondary: #0d9488;
+  --accent-secondary-glow: rgba(13, 148, 136, 0.25);
+  --accent-warm: #d97706;
+  --accent-danger: #e11d48;
+  --accent-danger-glow: rgba(225, 29, 72, 0.25);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --text-inverse: #ffffff;
+
+  --shadow-sm: 0 4px 14px rgba(2, 132, 199, 0.08);
+  --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.25);
+}
+
+/* Tema 3: Siber Kehribar (Cyber Amber - Sıcak, Canlı ve Yüksek Kontrast) */
+[data-theme="cyber-amber"] {
+  --bg-primary: #12100e;
+  --bg-secondary: #221c17;
+  --bg-card: rgba(36, 28, 22, 0.75);
+  --bg-card-hover: rgba(49, 38, 30, 0.9);
+  --border-color: rgba(245, 158, 11, 0.28);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+
+  --accent-primary: #f59e0b;
+  --accent-primary-hover: #d97706;
+  --accent-primary-glow: rgba(245, 158, 11, 0.4);
+  --accent-secondary: #ef4444;
+  --accent-secondary-glow: rgba(239, 68, 68, 0.35);
+  --accent-warm: #fbbf24;
+  --accent-danger: #f43f5e;
+  --accent-danger-glow: rgba(244, 63, 94, 0.4);
+
+  --text-main: #fffbeb;
+  --text-muted: #d5c3b1;
+  --text-dim: #8b7969;
+  --text-inverse: #191207;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 25px var(--accent-primary-glow);
+}
+
+/* Tema 4: Kuzey Işıkları (Nordic Aurora - Turkuaz ve Kutup Parıltısı) */
+[data-theme="nordic-aurora"] {
+  --bg-primary: #061e24;
+  --bg-secondary: #0d323c;
+  --bg-card: rgba(14, 53, 63, 0.7);
+  --bg-card-hover: rgba(20, 72, 85, 0.85);
+  --border-color: rgba(45, 212, 191, 0.25);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  --accent-primary: #2dd4bf;
+  --accent-primary-hover: #14b8a6;
+  --accent-primary-glow: rgba(45, 212, 191, 0.4);
+  --accent-secondary: #38bdf8;
+  --accent-secondary-glow: rgba(56, 189, 248, 0.4);
+  --accent-warm: #fbbf24;
+  --accent-danger: #fb7185;
+  --accent-danger-glow: rgba(251, 113, 133, 0.4);
+
+  --text-main: #f0fdfa;
+  --text-muted: #99f6e4;
+  --text-dim: #5eead4;
+  --text-inverse: #042f2e;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 25px var(--accent-primary-glow);
+}
+
+/* Temel Sıfırlamalar */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Arka Plan Dinamik Izgarası ve Parıltı Efekti */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 15% 15%, var(--accent-primary-glow) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, var(--accent-secondary-glow) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   ÜST BAŞLIK (NAVBAR)
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-inverse);
+  box-shadow: 0 0 15px var(--accent-primary-glow);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text-main), var(--accent-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-secondary);
+}
+
+/* Navigasyon Sekmeleri */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.active {
+  color: var(--text-inverse);
+  background: var(--accent-primary);
+  box-shadow: 0 0 14px var(--accent-primary-glow);
+}
+
+.nav-link .badge-pvp {
+  background: var(--accent-danger);
+  color: white;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  animation: pulse-badge 1.8s infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.85; }
+}
+
+/* Nav Aksiyonları (Ses, Tema, Profil) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.theme-dropdown {
+  position: relative;
+}
+
+.theme-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  min-width: 170px;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 1000;
+}
+
+.theme-menu.show {
+  display: flex;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.theme-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   ANA İÇERİK KONTEYNERİ & GÖRÜNÜMLER
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.view-section {
+  display: none;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.view-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   DASHBOARD / GENEL BAKIŞ
+   ========================================================================== */
+.hero-banner {
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--accent-primary-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.hero-text h1 span {
+  color: var(--accent-primary);
+}
+
+.hero-text p {
+  color: var(--text-muted);
+  max-width: 600px;
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-stats-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.stat-chip i {
+  color: var(--accent-primary);
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 220px;
+}
+
+/* Butonlar */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--accent-primary-glow);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-primary-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: var(--accent-danger);
+  color: white;
+  box-shadow: 0 4px 16px var(--accent-danger-glow);
+}
+
+.btn-danger:hover {
+  background: #e11d48;
+}
+
+/* Bölüm Başlıkları */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   OYUN KARTLARI IZGARASI (GAMES GRID)
+   ========================================================================== */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.game-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.game-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.game-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  transition: transform var(--transition-bounce);
+}
+
+.game-card:hover .game-icon-box {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.domain-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.tag-memory { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+.tag-flexibility { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.tag-speed { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+.tag-attention { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+.tag-pvp { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+.game-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.game-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.game-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.game-high-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.play-arrow {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   ÖZEL İNOVATİF PVP ARENA BÖLÜMÜ (LUMOSITY'DE HİÇ OLMAYAN ÖZELLİK)
+   ========================================================================== */
+.pvp-hero-card {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(16, 185, 129, 0.1));
+  border: 1px solid var(--accent-danger);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 0 30px var(--accent-danger-glow);
+}
+
+.pvp-hero-info h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.pvp-hero-info p {
+  color: var(--text-muted);
+  max-width: 650px;
+  font-size: 0.98rem;
+}
+
+/* PvP Oyun Arenası Split Screen */
+.pvp-arena-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.pvp-top-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pvp-timer-box {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-warm);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.3rem 1.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.pvp-split-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+}
+
+.pvp-split-screen::before {
+  content: 'VS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: var(--accent-danger);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px var(--accent-danger-glow);
+  z-index: 10;
+}
+
+.pvp-player-pane {
+  background: var(--bg-card);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.pvp-player-pane.p1 {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.pvp-player-pane.p2 {
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+/* Saldırı efektleri (Distortion & Glitch) */
+.pvp-player-pane.under-attack {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  filter: blur(2px) hue-rotate(90deg);
+  border-color: var(--accent-danger);
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.pvp-player-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.pvp-player-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pvp-score-box {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.pvp-meter-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+
+.pvp-meter-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-warm));
+  transition: width 0.2s ease;
+}
+
+/* ==========================================================================
+   OYUN OYNAMA ALANI (MODAL & STAGE CONTAINER)
+   ========================================================================== */
+.game-stage-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 18, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.game-stage-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.stage-window {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  max-width: 680px;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.stage-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.stage-title-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stage-title-info h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.stage-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+.hud-val {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+}
+
+.stage-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   OYUN 1: ZİHİN MATRİSİ (Kullanıcının Verdiği Oyunun Gelişmiş Hali)
+   ========================================================================== */
+.matrix-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.matrix-grid.grid-4x4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.matrix-tile {
+  aspect-ratio: 1;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: transparent;
+}
+
+.matrix-tile:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  transform: scale(1.02);
+}
+
+.matrix-tile:active {
+  transform: scale(0.95);
+}
+
+.matrix-tile.active {
+  background-color: var(--accent-primary) !important;
+  box-shadow: 0 0 20px var(--accent-primary-glow) !important;
+  color: var(--text-inverse);
+  transform: scale(1.05);
+}
+
+.matrix-tile.error {
+  background-color: var(--accent-danger) !important;
+  box-shadow: 0 0 20px var(--accent-danger-glow) !important;
+  animation: shake 0.3s ease;
+}
+
+.matrix-tile.success-round {
+  background-color: #10b981 !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.8) !important;
+}
+
+.matrix-feedback-msg {
+  font-size: 1.05rem;
+  font-weight: 700;
+  height: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   OYUN 2: AKINTI & ROTA (Stream Switch - Task Switching / Flexibility)
+   ========================================================================== */
+.stream-arena {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.stream-cue-card {
+  background: var(--bg-card);
+  border: 2px solid var(--accent-warm);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-warm);
+  animation: pulse-border 1.5s infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+
+.stream-visual-stage {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.stream-arrow-icon {
+  font-size: 4rem;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+}
+
+.stream-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.stream-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 0;
+  font-size: 1.3rem;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.stream-btn:hover {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   OYUN 3: KROMATİK ÇATIŞMA (Stroop Clash - Speed & Inhibition)
+   ========================================================================== */
+.stroop-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 440px;
+}
+
+.stroop-question {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.stroop-word-display {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  padding: 1.5rem 2.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.15s ease;
+  user-select: none;
+}
+
+.stroop-action-row {
+  display: flex;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.stroop-choice-btn {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+/* ==========================================================================
+   OYUN 4: SÜRÜ ALGISI (Flock Resonance - Spatial Attention)
+   ========================================================================== */
+.flock-board {
+  display: grid;
+  grid-template-columns: repeat(5, 52px);
+  grid-template-rows: repeat(5, 52px);
+  gap: 8px;
+  justify-content: center;
+  align-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.flock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.flock-item.leader {
+  color: var(--accent-primary);
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 10px var(--accent-primary-glow));
+}
+
+/* ==========================================================================
+   ANALİTİK & ZİHİN HARİTASI (RADAR CHART & STATS)
+   ========================================================================== */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radar-chart-container {
+  width: 100%;
+  max-width: 380px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.metric-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.metric-bar-container {
+  width: 120px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.metric-bar-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 900px) {
+  .hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pvp-split-screen {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .pvp-split-screen::before {
+    display: none;
+  }
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+  .nav-links {
+    display: none; /* Mobilde alt menüye veya gizliye */
+  }
+}
